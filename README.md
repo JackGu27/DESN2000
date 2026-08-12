@@ -31,7 +31,7 @@ reuses a known-good weekly lab, so nobody starts from a blank page.
 - **Reference:** light-sensor code already exists in the demo; `lab4/blinky` + `lab4/toggle` for GPIO
 - **Pins:** ADC AD0.2 / P0.25 · blind LEDs P3.16–21 · ladder P2.1–8 (enable P0.22) · buttons S1=P0.10, S2=P0.11
 
-### Section 2 — Sound & Time  → **[ your name ]**
+### Section 2 — Sound & Time  → **[ song ]**
 - **Files:** `speaker.c/.h`, `clock.c/.h`
 - **Does:** doorbell chime (DAC) + a software clock for time-of-day automation
 - **Worth:** 1 pt (doorbell) + timekeeping the automation needs
