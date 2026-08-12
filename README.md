@@ -38,7 +38,7 @@ reuses a known-good weekly lab, so nobody starts from a blank page.
 - **Reference:** copy `lab5/play_song` (`play_tone.c`, `songs.c`). Speaker = Timer0, clock = Timer1
 - **Pins:** DAC AOUT = P0.26
 
-### Section 3 — Automation & Assembly  → **[ your name ]**  *(hardest; owns `main.c` integration)*
+### Section 3 — Automation & Assembly  → **[ Zhengxi ]**  *(hardest; owns `main.c` integration)*
 - **Files:** `decision.s` **(ARM assembly)**, `automation.c/.h`
 - **Does:** the "smarts" — decide blinds/plug from light + time. Decision logic in assembly (satisfies tutor)
 - **Worth:** 2 pts (automation) + fulfils the assembly requirement
