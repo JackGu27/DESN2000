@@ -1,5 +1,5 @@
-light_sensor_demo  -  DESN2000 Home Automation Hub
-==================================================
+home_automation_hub  -  DESN2000 Home Automation Hub
+====================================================
 
 WHAT IT DOES
 ------------
@@ -37,7 +37,7 @@ HARDWARE / PINS (Keil QVGA Base Board + DESN2000 Daughter Board, LPC2478)
 
 HOW TO BUILD AND RUN
 --------------------
-  1. Open  light_sensor_demo.uvproj  in Keil uVision4.
+  1. Open  home_automation_hub.uvproj  in Keil uVision4.
   2. Target is "QVGA Base Board". Build (F7).
   3. Load onto the board and run. Cover the sensor -> fewer LEDs; shine a
      phone torch on it -> more LEDs.
