@@ -2,42 +2,36 @@
 #include "speaker.h"
 #include "songs.h"
 
-// Length of one duration unit from songs.c
 #define DOORBELL_RATE 100000
-
-// Number of notes used for the doorbell
 #define DOORBELL_NOTES 6
 
 
-// Set up the DAC output
-static void setup_DAC(void)
+// Set up DAC output on P0.26
+void speaker_init(void)
 {
     // Set P0.26 to AOUT
-    PINSEL1 &= ~(3 << 20);
-    PINSEL1 |=  (2 << 20);
-    // Start with speaker off
+    PINSEL1 &= ~(0x03 << 20);
+    PINSEL1 |=  (0x02 << 20);
 
+    // Start with speaker off
     DACR = 0;
 }
 
 
 // Delay in microseconds using Timer0
-static void udelay(unsigned int delay_in_us)
+static void udelay(unsigned int us)
 {
-    // Reset Timer0
-    T0TCR = 0x02;
-
     // Make Timer0 count once every 1 us
     T0PR = (Fpclk / 1000000) - 1;
 
-    // Finish reset
-    T0TCR = 0x00;
+    // Reset Timer0
+    T0TCR = 0x02;
 
     // Start Timer0
     T0TCR = 0x01;
 
-    // Wait until the delay is finished
-    while (T0TC < delay_in_us)
+    // Wait for the delay
+    while (T0TC < us)
     {
     }
 
@@ -46,7 +40,7 @@ static void udelay(unsigned int delay_in_us)
 }
 
 
-// Play one tone using the DAC
+// Play one tone
 static void play_tone(unsigned int duration,
                       int period,
                       int vol)
@@ -61,69 +55,57 @@ static void play_tone(unsigned int duration,
         return;
     }
 
-    // Make a square wave for the required time
+    // Make a square wave
     while (time_played < duration)
     {
-        // Speaker high
+        // High
         DACR = ((unsigned int)(vol & 0x3FF) << 6);
         udelay(period / 2);
 
-        // Speaker low
+        // Low
         DACR = 0;
         udelay(period / 2);
 
         time_played += period;
     }
 
-    // Make sure the speaker is off
+    // Make sure speaker is off
     DACR = 0;
 }
 
 
-// Set up the speaker hardware
-void speaker_init(void)
+// Optional light sensor sound
+void speaker_chirp(unsigned int light)
 {
-    setup_DAC();
+    unsigned int freq;
+    unsigned int half;
 
-    // Start with no sound
+    // Brighter light gives a higher pitch
+    freq = 200 + (light * 1800) / 4095;
+
+    // Half period in microseconds
+    half = (1000000 / freq) / 2;
+
+    DACR = 0x3FF << 6;
+    udelay(half);
+
     DACR = 0;
+    udelay(half);
 }
 
 
-// Short sound used by the light sensor demo
-
-void chirp(unsigned int period)
-
-{
-
-    play_tone(100000, period, 0x200);
-
-}
-
-// Doorbell sound
-
+// Play a short doorbell sound
 void chime(void)
-
 {
-
     int i;
 
-    // Use the first few notes from the Lab 5 song
-
+    // Use the first few notes from songs.c
     for (i = 0; i < DOORBELL_NOTES; i++)
-
     {
-
         play_tone(
-
             song_data[i].duration * DOORBELL_RATE,
-
             song_data[i].pitch,
-
             song_data[i].volume
-
         );
-
     }
-
 }
