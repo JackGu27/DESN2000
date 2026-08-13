@@ -4,15 +4,18 @@
 // Start the software clock
 void clock_init(void);
 
-// Update the current time
+// Update the software clock
 void clock_update(void);
 
 // Set the current time
-void clock_set_time(unsigned int h,
-                    unsigned int m,
-                    unsigned int s);
+void clock_set_time(unsigned int hour,
+                    unsigned int minute,
+                    unsigned int second);
 
-// Get the current time
+// Return current time in seconds from midnight
+unsigned int clock_now(void);
+
+// Get individual time values
 unsigned int clock_get_hour(void);
 unsigned int clock_get_minute(void);
 unsigned int clock_get_second(void);
