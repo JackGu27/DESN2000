@@ -11,35 +11,29 @@ AutomationState automation_state;
 void automation_init(void)
 {
     automation_state.light = 0;
-
     automation_state.time = 0;
-
     automation_state.blind1_state = UP;
-
     automation_state.blind2_state = UP;
-
     automation_state.plug_state = PLUG_OFF;
 }
 
-/* =========================================================
- * automation_update()
- * =========================================================
- *
- * Called once during every main loop.
- *
- * Input:
- *
- * light = light value already read by main.c
- *
- * Steps:
- *
- * 1. Store light value
+ // Called once during every main loop.
  * 2. Read current time
  * 3. Call decision.s
  * 4. Decode result
  * 5. Store blind and plug states
  * 6. Send blind state to S1
  */
+
+void automation_update(unsigned int light)
+{
+    int result;
+    int blind;
+    int plug;
+
+// Store light value (input is light)
+automation_state.light = light;
+
 
 
 
