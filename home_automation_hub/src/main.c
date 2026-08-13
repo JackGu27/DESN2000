@@ -124,11 +124,28 @@ int main(void)
     leds_init();
     // Set up Section 2
     speaker_init();
-    clock_init();                                    /* LEDs used by the bar and the dark indicator */
+    clock_init();      /* LEDs used by the bar and the dark indicator */
+
+    // Set P0.11 as GPIO
+    PINSEL0 &= ~(3u << 22);
+    // Set P0.11 as input
+    FIO0DIR &= ~(1u << 11);
 
     while (1) {
 		// Keep the software clock updated
         clock_update();
+		
+        // Check the doorbell button
+        if ((FIO0PIN & (1u << 11)) != 0)
+        {
+            chime();
+
+            // Wait until the button is released
+            while ((FIO0PIN & (1u << 11)) != 0)
+            {
+            }
+        }
+
         light = light_read();                       /* 0 (dark) .. 4095 (bright) */
 
 #if USE_LED_BAR
