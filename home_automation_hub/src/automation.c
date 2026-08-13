@@ -1,8 +1,6 @@
 #include "automation.h"
-
-// Functions supplied by other team sections
-extern void blind_set(int which, int position);
-extern unsigned int clock_now(void);
+#include "clock.h"
+#include "led.h"
 
 // Shared automation state
 AutomationState automation_state;
@@ -28,7 +26,7 @@ void automation_update(unsigned int light)
 automation_state.light = light;
 
 // Read current time
-automation_state.time = clock_now();
+automation_state.time = clock_now() / 60;
 
 // Call decision.s and ARM Assembly decision logic.
 result = decision_asm(automation_state.light, automation_state.time);
