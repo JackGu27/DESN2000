@@ -403,6 +403,46 @@
               <FileType>1</FileType>
               <FilePath>.\src\main.c</FilePath>
             </File>
+            <File>
+              <FileName>light.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\light.c</FilePath>
+            </File>
+            <File>
+              <FileName>led.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\led.c</FilePath>
+            </File>
+            <File>
+              <FileName>button.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\button.c</FilePath>
+            </File>
+            <File>
+              <FileName>clock.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\clock.c</FilePath>
+            </File>
+            <File>
+              <FileName>speaker.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\speaker.c</FilePath>
+            </File>
+            <File>
+              <FileName>songs.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\songs.c</FilePath>
+            </File>
+            <File>
+              <FileName>automation.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\automation.c</FilePath>
+            </File>
+            <File>
+              <FileName>decision.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\src\decision.s</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

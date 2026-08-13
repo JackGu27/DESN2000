@@ -8,8 +8,8 @@
 #define UP    2
 
 // Two blinds in the cottage
-#define BLIND_1  0
-#define BLIND_2  1
+#define BLIND_1  1
+#define BLIND_2  2
 
 // Smart plug states
 #define PLUG_OFF  0
