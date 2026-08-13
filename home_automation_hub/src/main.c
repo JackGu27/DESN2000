@@ -115,51 +115,20 @@ void leds_bar(unsigned int n) {
 }
 
 /* ==========================================================================
- *  Speaker pitch (optional)  -  DAC on AOUT (P0.26), timed with Timer0
- * ========================================================================== */
-#if USE_SPEAKER
-
-void speaker_init(void) {
-    PINSEL1 &= ~(0x03 << 20);       /* clear the 2 function bits for P0.26 ... */
-    PINSEL1 |=  (0x02 << 20);       /* ... and select AOUT (the DAC output)    */
-}
-
-/* Busy-wait for 'us' microseconds using Timer0 (same method as lab5).       */
-void udelay(unsigned int us) {
-    T0PR  = (Fpclk / 1000000) - 1;  /* prescaler: TC ticks once per microsecond */
-    T0TCR = 2;                      /* reset the timer                          */
-    T0TCR = 1;                      /* enable (reset bit cleared)               */
-    while (T0TC < us)
-        ;
-}
-
-/* Emit one square-wave cycle whose pitch rises with the light level.
- * Brighter light -> shorter period -> higher pitch (~200 Hz .. ~2 kHz).     */
-void speaker_chirp(unsigned int light) {
-    unsigned int freq = 200 + (light * 1800) / 4095;  /* 200 Hz dark -> 2 kHz  */
-    unsigned int half = (1000000 / freq) / 2;         /* half-period in us     */
-
-    DACR = 0x3FF << 6;              /* high half of the wave (max volume)      */
-    udelay(half);
-    DACR = 0x000 << 6;              /* low half (0 V)                          */
-    udelay(half);
-}
-
-#endif /* USE_SPEAKER */
-
-/* ==========================================================================
  *  Main loop
  * ========================================================================== */
-int main(void) {
+int main(void)
+{
     unsigned int light, n;
-
     light_init();
-    leds_init();                                    /* LEDs used by the bar and the dark indicator */
-#if USE_SPEAKER
+    leds_init();
+    // Set up Section 2
     speaker_init();
-#endif
+    clock_init();                                    /* LEDs used by the bar and the dark indicator */
 
     while (1) {
+		// Keep the software clock updated
+        clock_update();
         light = light_read();                       /* 0 (dark) .. 4095 (bright) */
 
 #if USE_LED_BAR
