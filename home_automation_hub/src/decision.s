@@ -75,8 +75,6 @@ blind_done
 
         ; Current time is before 15:30, Keep plug OFF.
         BLT     pack_result
-
-
         
         ; End of preheat period = 16:30.
         ; 16:30 = 16 * 60 + 30 = 990 minutes
@@ -86,39 +84,13 @@ blind_done
         ; If time >= 16:30, plug stays OFF.
         BGE     pack_result
 
-
-        ; -------------------------------------------------
-        ; Therefore:
-        ;
-        ; 930 <= time < 990
-        ;
-        ; Turn plug ON.
-        ; -------------------------------------------------
-
+        ; 930 <= time < 990, Turn plug ON.
         MOV     R3, #1
 
-
-
-; =========================================================
-; PART 3
-; PACK RETURN VALUE
-; =========================================================
-
-
+; PART 3 PACK RETURN VALUE
 pack_result
-
-
-        ; R2 contains blind:
-        ;
-        ; DOWN = 0
-        ; MID  = 1
-        ; UP   = 2
-        ;
-        ;
-        ; R3 contains plug:
-        ;
-        ; OFF = 0
-        ; ON  = 1
+        ; R2 contains blind: DOWN = 0 MID = 1 UP = 2
+        ; R3 contains plug: OFF = 0 ON  = 1
         ;
         ;
         ; Shift plug state left by 2 bits.
