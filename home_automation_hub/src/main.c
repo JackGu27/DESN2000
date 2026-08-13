@@ -127,6 +127,9 @@ int main(void)
     speaker_init();
     clock_init();      /* LEDs used by the bar and the dark indicator */
 
+	// Set up Section 3
+	automation_init();
+
     // Set P0.11 as GPIO
     PINSEL0 &= ~(3u << 22);
     // Set P0.11 as input
@@ -168,5 +171,8 @@ int main(void)
         if (light < DARK_THRESHOLD) {
             LED_SET = (1u << ledBit[NUM_LEDS - 1]); /* "cottage lights ON"       */
         }
+
+		// section 3
+		automation_update(light);
     }
 }
