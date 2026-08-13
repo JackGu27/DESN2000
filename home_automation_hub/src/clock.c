@@ -77,7 +77,20 @@ void clock_set_time(unsigned int h,
         seconds = s;
     }
 }
+        
 
+
+// Return seconds from midnight
+
+unsigned int clock_now(void)
+
+{
+
+    return (hours * 3600) + (minutes * 60) + seconds;
+
+}
+
+        
 unsigned int clock_get_hour(void)
 {
     return hours;
