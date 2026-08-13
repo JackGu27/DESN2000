@@ -2,10 +2,10 @@
 #include "light.h"
 #include "led.h"
 #include "button.h"
+#include "speaker.h"
+#include "clock.h"
+#include "automation.h"
 
-/* ADC full scale is 12 bits (0..4095). Below this reading we call it "dark"
- * and trigger the automation (turn the cottage lights on). Tune on the day
- * by covering the sensor and reading the value in the debugger.             */
 #define DARK_THRESHOLD  600
 
 /* ==========================================================================
@@ -14,11 +14,39 @@
 int main(void) {
     unsigned int light;
 
+    // Set up Section 1
     light_init();
     led_init();
+    // Set up Section 2
+    speaker_init();
+    clock_init();
+
+	// Set up Section 3
+	automation_init();
+
+    // Set P0.11 as GPIO
+    PINSEL0 &= ~(3u << 22);
+    // Set P0.11 as input
+    FIO0DIR &= ~(1u << 11);
 
     while (1) {
-        light = light_read();                       /* 0 (dark) .. 4095 (bright) */
+		// Keep the software clock updated
+        clock_update();
+		
+        // Check the doorbell button
+        if ((FIO0PIN & (1u << 11)) != 0)
+        {
+            chime();
 
+            // Wait until the button is released
+            while ((FIO0PIN & (1u << 11)) != 0)
+            {
+            }
+        }
+
+        light = light_read();
+        // section 3
+		automation_update(light);
     }
+
 }

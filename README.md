@@ -31,20 +31,20 @@ reuses a known-good weekly lab, so nobody starts from a blank page.
 - **Reference:** light-sensor code already exists in the demo; `lab4/blinky` + `lab4/toggle` for GPIO
 - **Pins:** ADC AD0.2 / P0.25 · blind LEDs P3.16–21 · ladder P2.1–8 (enable P0.22) · buttons S1=P0.10, S2=P0.11
 
-### Section 2 — Sound & Time  → **[ your name ]**
+### Section 2 — Sound & Time  → **[ song ]**
 - **Files:** `speaker.c/.h`, `clock.c/.h`
 - **Does:** doorbell chime (DAC) + a software clock for time-of-day automation
 - **Worth:** 1 pt (doorbell) + timekeeping the automation needs
 - **Reference:** copy `lab5/play_song` (`play_tone.c`, `songs.c`). Speaker = Timer0, clock = Timer1
 - **Pins:** DAC AOUT = P0.26
 
-### Section 3 — Automation & Assembly  → **[ your name ]**  *(hardest; owns `main.c` integration)*
+### Section 3 — Automation & Assembly  → **[ Zhengxi ]**  *(hardest; owns `main.c` integration)*
 - **Files:** `decision.s` **(ARM assembly)**, `automation.c/.h`
 - **Does:** the "smarts" — decide blinds/plug from light + time. Decision logic in assembly (satisfies tutor)
 - **Worth:** 2 pts (automation) + fulfils the assembly requirement
 - **Reference:** `lab5/max_of_5/max_of_5.s` for the C-calls-assembly (AAPCS) pattern
 
-### Section 4 — LCD Touchscreen UI  → **[ your name ]**  *(biggest, but mostly reuse)*
+### Section 4 — LCD Touchscreen UI  → **Declan**  *(biggest, but mostly reuse)*
 - **Files:** copy `lcd/` folder + `touch.c/.h` from `lab6/bubblepop`; write `ui.c/.h`
 - **Does:** touchscreen dashboard — show light/time/blind+plug state, touch buttons to control fixtures
 - **Worth:** 2 pts
