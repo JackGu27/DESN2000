@@ -21,3 +21,28 @@ void automation_init(void)
     automation_state.plug_state = PLUG_OFF;
 }
 
+/* =========================================================
+ * automation_update()
+ * =========================================================
+ *
+ * Called once during every main loop.
+ *
+ * Input:
+ *
+ * light = light value already read by main.c
+ *
+ * Steps:
+ *
+ * 1. Store light value
+ * 2. Read current time
+ * 3. Call decision.s
+ * 4. Decode result
+ * 5. Store blind and plug states
+ * 6. Send blind state to S1
+ */
+
+
+
+
+
+
