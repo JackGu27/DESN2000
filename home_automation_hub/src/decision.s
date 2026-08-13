@@ -58,73 +58,32 @@ decision_asm
         MOV     R2, #0
         B       blind_done
 
-blind_mid
-
-        ; -------------------------------------------------
-        ; 600 <= light < 2000
-        ;
-        ; Set blind halfway.
-        ; -------------------------------------------------
-
+blind_mid      
+        ; Set blind MID.
         MOV     R2, #1
-
-
 
 blind_done
 
-
-; =========================================================
-; PART 2
-; SMART PLUG AUTOMATION
-; =========================================================
-
-
+; PART 2 SMART PLUG AUTOMATION
         ; Start with plug OFF.
-
         MOV     R3, #0
 
-
-        ; -------------------------------------------------
         ; Preheat schedule starts at 15:30.
-        ;
-        ; 15:30
-        ;
-        ; = 15 * 60 + 30
-        ;
-        ; = 930 minutes
-        ; -------------------------------------------------
-
+        ; 15:30 = 15 * 60 + 30 = 930 minutes
         LDR     R12, =930
-
         CMP     R1, R12
 
-
-        ; Current time is before 15:30.
-        ;
-        ; Keep plug OFF.
-
+        ; Current time is before 15:30, Keep plug OFF.
         BLT     pack_result
 
 
-        ; -------------------------------------------------
+        
         ; End of preheat period = 16:30.
-        ;
-        ; 16:30
-        ;
-        ; = 16 * 60 + 30
-        ;
-        ; = 990 minutes
-        ; -------------------------------------------------
-
+        ; 16:30 = 16 * 60 + 30 = 990 minutes
         LDR     R12, =990
-
         CMP     R1, R12
 
-
-        ; If time >= 16:30,
-        ;
-        ; plug stays OFF.
-
+        ; If time >= 16:30, plug stays OFF.
         BGE     pack_result
 
 
