@@ -1,15 +1,7 @@
 #ifndef AUTOMATION_H
 #define AUTOMATION_H
 
-// Blind positions
-// RED = UP; GREEN = MID; BLUE = DOWN
-#define DOWN  0
-#define MID   1
-#define UP    2
-
-// Two blinds in the cottage
-#define BLIND_1  1
-#define BLIND_2  2
+#include "led.h"
 
 // Smart plug states
 #define PLUG_OFF  0
@@ -24,7 +16,6 @@ typedef struct {
 
     int blind1_state;
     int blind2_state;
-
     int plug_state;
 
 } AutomationState;
