@@ -25,6 +25,7 @@
 #include "lpc24xx.h"
 #include "speaker.h"
 #include "clock.h"
+#include "automation.h"
 
 /* ==========================================================================
  *  LED CONFIG
