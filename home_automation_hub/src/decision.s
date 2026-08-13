@@ -5,40 +5,25 @@
     
 ; =========================================================
 ; decision_asm
-; Automation decision written in ARM Assembly.
 ;
-; INPUT
-; R0 = light sensor ADC reading
-; R1 = current time in minutes after midnight
+; R0 = light sensor reading
+; R1 = minutes after midnight
 ;
-; OUTPUT
-; R0 = packed automation result
+; Return:
+; bits 1:0 = blind position
+; bit 2    = smart plug
 ;
-; bits 0-1:
-; 00 = blind DOWN
-; 01 = blind MID
-; 10 = blind UP
-;
-; bit 2:
-; 0 = smart plug OFF
-; 1 = smart plug ON
-;
-; Example:
-; R0 = 5
-; 5 = binary 101
-;
-; bit 2 = 1
-; -> smart plug ON
-;
-; bits 1:0 = 01
-; -> blind MID
+; led.h convention:
+; UP   = 0
+; MID  = 1
+; DOWN = 2
 ; =========================================================
 
 decision_asm
     
 ; PART 1 BLIND AUTOMATION
         ; Start by assuming the blind is UP.
-        MOV     R2, #2
+        MOV     R2, #0
 
         ; Compare light value with dark threshold.
         ; light < 600 -> keep blind UP
@@ -55,7 +40,7 @@ decision_asm
         ; light >= 2000
         ; Very bright environment.
         ; Close blind to reduce glare / heat gain, keep blind DOWN.
-        MOV     R2, #0
+        MOV     R2, #2
         B       blind_done
 
 blind_mid      
