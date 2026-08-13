@@ -62,9 +62,8 @@ blind_mid
         ; Set blind MID.
         MOV     R2, #1
 
-blind_done
-
 ; PART 2 SMART PLUG AUTOMATION
+blind_done
         ; Start with plug OFF.
         MOV     R3, #0
 
@@ -91,25 +90,11 @@ blind_done
 pack_result
         ; R2 contains blind: DOWN = 0 MID = 1 UP = 2
         ; R3 contains plug: OFF = 0 ON  = 1
-        ;
-        ;
-        ; Shift plug state left by 2 bits.
-        ;
-        ; Then combine it with blind state.
-        ;
-        ;
-        ; Result:
-        ;
-        ; bit 2    = plug
-        ; bits 1:0 = blind
+        ; Shift plug state left by 2 bits, Then combine it with blind state.
 
-
+        ; Result: bit 2 = plug, bits 1:0 = blind
         ORR     R0, R2, R3, LSL #2
 
-
         ; Return to C.
-
         BX      LR
-
-
         END
