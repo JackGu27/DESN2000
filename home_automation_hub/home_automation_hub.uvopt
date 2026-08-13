@@ -216,10 +216,10 @@
       <FileType>1</FileType>
       <tvExp>1</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>43</ColumnNumber>
+      <ColumnNumber>79</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>141</TopLine>
-      <CurrentLine>166</CurrentLine>
+      <TopLine>2</TopLine>
+      <CurrentLine>23</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\src\main.c</PathWithFileName>
       <FilenameWithoutPath>main.c</FilenameWithoutPath>
