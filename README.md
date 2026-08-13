@@ -44,7 +44,7 @@ reuses a known-good weekly lab, so nobody starts from a blank page.
 - **Worth:** 2 pts (automation) + fulfils the assembly requirement
 - **Reference:** `lab5/max_of_5/max_of_5.s` for the C-calls-assembly (AAPCS) pattern
 
-### Section 4 — LCD Touchscreen UI  → **[ your name ]**  *(biggest, but mostly reuse)*
+### Section 4 — LCD Touchscreen UI  → **Declan**  *(biggest, but mostly reuse)*
 - **Files:** copy `lcd/` folder + `touch.c/.h` from `lab6/bubblepop`; write `ui.c/.h`
 - **Does:** touchscreen dashboard — show light/time/blind+plug state, touch buttons to control fixtures
 - **Worth:** 2 pts
