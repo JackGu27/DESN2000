@@ -15,6 +15,9 @@ static void setup_DAC(void)
     // Set P0.26 to AOUT
     PINSEL1 &= ~(3 << 20);
     PINSEL1 |=  (2 << 20);
+    // Start with speaker off
+
+    DACR = 0;
 }
 
 
@@ -87,17 +90,40 @@ void speaker_init(void)
 }
 
 
-// Play a short part of the Lab 5 song as the doorbell
-void speaker_doorbell(void)
+// Short sound used by the light sensor demo
+
+void chirp(unsigned int period)
+
 {
+
+    play_tone(100000, period, 0x200);
+
+}
+
+// Doorbell sound
+
+void chime(void)
+
+{
+
     int i;
 
+    // Use the first few notes from the Lab 5 song
+
     for (i = 0; i < DOORBELL_NOTES; i++)
+
     {
+
         play_tone(
+
             song_data[i].duration * DOORBELL_RATE,
+
             song_data[i].pitch,
+
             song_data[i].volume
+
         );
+
     }
+
 }
