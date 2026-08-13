@@ -50,3 +50,4 @@ automation_state.plug_state = plug;
 blind_set(BLIND_1, automation_state.blind1_state);
 blind_set(BLIND_2, automation_state.blind2_state);
 
+}
