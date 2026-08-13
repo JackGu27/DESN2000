@@ -7,7 +7,7 @@ void speaker_init(void);
 // Play the doorbell sound
 void chime(void);
 
-// Optional short sound for testing
-void chirp(unsigned int period);
+// Optional sound for the light sensor demo
+void speaker_chirp(unsigned int light);
 
 #endif
