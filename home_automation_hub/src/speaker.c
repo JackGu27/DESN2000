@@ -21,22 +21,11 @@ void speaker_init(void)
 // Delay in microseconds using Timer0
 static void udelay(unsigned int us)
 {
-    // Make Timer0 count once every 1 us
-    T0PR = (Fpclk / 1000000) - 1;
+    unsigned int start = T0TC;
 
-    // Reset Timer0
-    T0TCR = 0x02;
-
-    // Start Timer0
-    T0TCR = 0x01;
-
-    // Wait for the delay
-    while (T0TC < us)
+    while ((T0TC - start) < us)
     {
     }
-
-    // Stop Timer0
-    T0TCR = 0x00;
 }
 
 

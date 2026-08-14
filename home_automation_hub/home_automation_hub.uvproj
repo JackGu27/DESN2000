@@ -348,7 +348,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath></IncludePath>
+              <IncludePath>.\src;.\src\lcd</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -442,6 +442,46 @@
               <FileName>decision.s</FileName>
               <FileType>2</FileType>
               <FilePath>.\src\decision.s</FilePath>
+            </File>
+            <File>
+              <FileName>ui.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\ui.c</FilePath>
+            </File>
+            <File>
+              <FileName>touch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\touch.c</FilePath>
+            </File>
+            <File>
+              <FileName>delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\delay.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>LCD Driver</GroupName>
+          <Files>
+            <File>
+              <FileName>lcd_hw.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\lcd\lcd_hw.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd_grph.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\lcd\lcd_grph.c</FilePath>
+            </File>
+            <File>
+              <FileName>font5x7.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\lcd\font5x7.c</FilePath>
+            </File>
+            <File>
+              <FileName>sdram.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\lcd\sdram.c</FilePath>
             </File>
           </Files>
         </Group>

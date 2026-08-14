@@ -5,6 +5,9 @@
 #define MID   1
 #define DOWN  2
 
+#define BLIND_1 1
+#define BLIND_2 2
+
 void led_init(void);
 void blind_set(unsigned int which, unsigned int state);
 

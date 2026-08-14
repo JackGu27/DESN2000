@@ -5,19 +5,25 @@
 #include "speaker.h"
 #include "clock.h"
 #include "automation.h"
+#include "ui.h"
 
 /* ==========================================================================
  *  Main loop
  * ========================================================================== */
 int main(void) {
     unsigned int light;
-
+		//ui_init();
     // Set up Section 1
     light_init();
     led_init();
     // Set up Section 2
     speaker_init();
+		button_init();
     clock_init();
+	
+		clock_set_time(4, 0, 0);   // start at 4am demo
+	
+		ui_init();
 
 	// Set up Section 3
 	automation_init();
@@ -27,6 +33,7 @@ int main(void) {
     // Set P0.11 as input
     FIO0DIR &= ~(1u << 11);
 
+	
     while (1) {
 		// Keep the software clock updated
         clock_update();
@@ -45,6 +52,9 @@ int main(void) {
         light = light_read();
         // section 3
 		automation_update(light);
+				
+				// ui update
+				ui_update();
     }
 
 }

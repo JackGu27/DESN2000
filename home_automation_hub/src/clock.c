@@ -15,19 +15,15 @@ void clock_init(void)
     hours = 0;
     minutes = 0;
     seconds = 0;
-    last_tick = 0;
+	
+    /* Timer0, not Timer1: NyanSim only implements Timer0. Free-running
+       microsecond counter, shared with speaker.c's udelay(). */
+    T0TCR = 0x02;                     /* hold in reset while configuring */
+    T0PR  = (Fpclk / 1000000) - 1;    /* one count per microsecond       */
+    T0TCR = 0x00;
+    T0TCR = 0x01;                     /* run                             */
 
-    // Reset Timer1
-    T1TCR = 0x02;
-
-    // Make Timer1 count once every 1 ms
-    T1PR = (Fpclk / 1000) - 1;
-
-    // Finish reset
-    T1TCR = 0x00;
-
-    // Start Timer1
-    T1TCR = 0x01;
+    last_tick = T0TC;
 }
 
 void clock_update(void)
@@ -35,7 +31,7 @@ void clock_update(void)
     unsigned int current_tick;
 
     // Read the current Timer1 count
-    current_tick = T1TC;
+    current_tick = T0TC;
 
     // 1000 counts = 1 second
     while ((current_tick - last_tick) >= 1000)

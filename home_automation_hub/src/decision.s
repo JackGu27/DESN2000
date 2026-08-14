@@ -23,7 +23,7 @@ decision_asm
     
 ; PART 1 BLIND AUTOMATION
         ; Start by assuming the blind is UP.
-        MOV     R2, #0
+        MOV     R2, #2
 
         ; Compare light value with dark threshold.
         ; light < 600 -> keep blind UP
@@ -40,7 +40,7 @@ decision_asm
         ; light >= 2000
         ; Very bright environment.
         ; Close blind to reduce glare / heat gain, keep blind DOWN.
-        MOV     R2, #2
+        MOV     R2, #0
         B       blind_done
 
 blind_mid      
